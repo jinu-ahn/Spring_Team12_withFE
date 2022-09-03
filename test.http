@@ -1,0 +1,24 @@
+POST http://localhost:8080/api/issue/token
+Content-Type: application/json
+Refresh-Token : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTIiLCJleHAiOjE2NjIyMDY5MzMsImlhdCI6MTY2MjIwNjkwM30.pbA_UBsYZo-YxK-BFaus_rH99Us4CFgxIQ55hOgKufo
+{}
+
+###
+POST http://localhost:8080/api/member/login
+Content-Type: application/json
+
+{
+  "username" : "test12",
+  "password" : "test12"
+}
+
+###
+POST http://localhost:8080/api/member/signup
+Content-Type: application/json
+
+{
+  "username" : "sejin12",
+  "password" : "sejin12"
+}
+
+###
