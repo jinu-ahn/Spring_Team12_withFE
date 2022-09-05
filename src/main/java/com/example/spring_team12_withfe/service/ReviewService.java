@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -24,6 +26,25 @@ public class ReviewService {
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
     private final TokenProvider tokenProvider;
+
+
+    public ResponseDto<?> getreview(Long id){
+        List<Review> reviewList = reviewRepository.findByBookId(id);
+        List<ReviewResponseDto> reviews= new ArrayList<>();
+
+        for(Review review : reviewList){
+            reviews.add(
+            ReviewResponseDto.builder()
+                    .id(review.getId())
+                    .user(review.getMember().getUsername())
+                    .review(review.getReview())
+                    .createdAt(review.getCreatedAt())
+                    .modifiedAt(review.getModifiedAt())
+                    .build()
+            );
+        }
+        return ResponseDto.success(reviews);
+    }
 
     @Transactional
     public ResponseDto<?> create(Book_ReviewRequestDto requestDto, HttpServletRequest request) {
