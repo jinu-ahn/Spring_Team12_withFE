@@ -1,7 +1,7 @@
 package com.example.spring_team12_withfe.controller;
 
 import com.example.spring_team12_withfe.domain.Book;
-import com.example.spring_team12_withfe.dto.BookRequestDto;
+import com.example.spring_team12_withfe.dto.request.BookRequestDto;
 
 import com.example.spring_team12_withfe.service.BookService;
 import com.example.spring_team12_withfe.utils.NaverBookSearch;

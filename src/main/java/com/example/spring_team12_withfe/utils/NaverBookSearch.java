@@ -1,6 +1,6 @@
 package com.example.spring_team12_withfe.utils;
 
-import com.example.spring_team12_withfe.dto.BookRequestDto;
+import com.example.spring_team12_withfe.dto.request.BookRequestDto;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.*;
@@ -21,13 +21,8 @@ public class NaverBookSearch {
 
         HttpEntity<String> requestEntity = new HttpEntity<String>(body, headers);
         ResponseEntity<String> responseEntity = rest.exchange("https://openapi.naver.com/v1/search/book.json?query=" + query, HttpMethod.GET, requestEntity, String.class);
-        HttpStatus httpStatus = responseEntity.getStatusCode();
-        int status = httpStatus.value();
-        String response = responseEntity.getBody();
-        System.out.println("Response status: " + status);
-        System.out.println(response);
 
-        return response;
+        return responseEntity.getBody();
     }
 
     public List<BookRequestDto> fromJSONtoBooks(String query) {

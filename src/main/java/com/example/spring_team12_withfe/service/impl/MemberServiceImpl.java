@@ -2,7 +2,7 @@ package com.example.spring_team12_withfe.service.impl;
 
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.domain.RefreshToken;
-import com.example.spring_team12_withfe.dto.GlobalResDto;
+import com.example.spring_team12_withfe.dto.Response.GlobalResDto;
 import com.example.spring_team12_withfe.repository.RefreshTokenRepository;
 import com.example.spring_team12_withfe.dto.member.LoginReqDto;
 import com.example.spring_team12_withfe.dto.member.MemberReqDto;

@@ -1,6 +1,6 @@
 package com.example.spring_team12_withfe.service;
 
-import com.example.spring_team12_withfe.dto.GlobalResDto;
+import com.example.spring_team12_withfe.dto.Response.GlobalResDto;
 import com.example.spring_team12_withfe.dto.member.LoginReqDto;
 import com.example.spring_team12_withfe.dto.member.MemberReqDto;
 
