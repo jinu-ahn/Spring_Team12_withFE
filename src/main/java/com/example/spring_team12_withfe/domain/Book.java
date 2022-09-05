@@ -30,9 +30,13 @@ public class Book {
     @Column(nullable = false)
     private String publisher;
 
+
+
+
     @JoinColumn(name="member_id")
     @ManyToOne(fetch = FetchType.LAZY)
     Member member;
+
     public Book(Book_ReviewRequestDto requestDto){
         this.thumbnail = requestDto.getThumbnail();
         this.title = requestDto.getTitle();

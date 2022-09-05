@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -23,14 +24,17 @@ public class Review extends Timestamped{
     @Column
     private String review;
 
-    @JoinColumn(name = "book_id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "book_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Book book;
 
 
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
+    private List<Comment> comment;
 
     public Review(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();
