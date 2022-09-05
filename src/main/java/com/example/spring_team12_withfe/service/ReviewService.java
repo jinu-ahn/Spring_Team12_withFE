@@ -8,6 +8,7 @@ import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.dto.Response.ReviewResponseDto;
 import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
+import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.BookRepository;
 import com.example.spring_team12_withfe.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,21 +23,22 @@ import java.util.Optional;
 public class ReviewService {
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
+    private final TokenProvider tokenProvider;
 
     @Transactional
     public ResponseDto<?> create(Book_ReviewRequestDto requestDto, HttpServletRequest request) {
-//        Member member = validateMember(request);
-//
-//        if (member == null) {
-//            throw new NullPointerException("Token이 유효하지 않습니다.");
-//        }
+        Member member = validateMember(request);
+
+        if (member == null) {
+            throw new NullPointerException("Token이 유효하지 않습니다.");
+        }
 
         Book book = Book.builder()
                 .thumbnail(requestDto.getThumbnail())
                 .title(requestDto.getTitle())
                 .author(requestDto.getAuthor())
                 .publisher(requestDto.getPublisher())
-//                .member(member)
+                .member(member)
                 .build();
         bookRepository.saveAndFlush(book);
 
@@ -44,7 +46,7 @@ public class ReviewService {
                 .review(requestDto.getReview())
                 .member(new Member())
                 .book(book)
-//                .member(member)
+                .member(member)
                 .build();
         reviewRepository.save(review);
 
@@ -94,13 +96,13 @@ public class ReviewService {
     }
 
 
-//    @Transactional
-//    public Member validateMember(HttpServletRequest request) {
-//        if (!jwtUtil.refreshTokenValidation(request.getHeader("Refresh-Token"))) {
-//            return null;
-//        }
-//        return jwtUtil.getMemberFromAuthentication();
-//    }
+    @Transactional
+    public Member validateMember(HttpServletRequest request) {
+        if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
+            return null;
+        }
+        return tokenProvider.getMemberFromAuthentication();
+    }
 
 }
 
