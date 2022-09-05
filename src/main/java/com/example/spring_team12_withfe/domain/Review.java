@@ -27,13 +27,16 @@ public class Review extends Timestamped{
     @ManyToOne(fetch = FetchType.EAGER)
     private Book book;
 
+
     @JoinColumn(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
     public Review(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();
     }
     public void update(ReviewRequestDto requestDto){
+
         this.review = requestDto.getReview();
     }
 

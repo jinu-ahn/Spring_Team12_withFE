@@ -1,32 +1,30 @@
 package com.example.spring_team12_withfe.domain;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@Entity
 @Getter
-@Setter
-public class RefreshToken {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+public class RefreshToken extends Timestamped {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
-    @NotBlank
-    private String refreshToken;
-    @NotBlank
-    private String memberUsername;
 
-    public RefreshToken() {}
+    @JoinColumn(name = "member_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    private Member member;
 
-    public RefreshToken(String token, String username) {
-        this.refreshToken = token;
-        this.memberUsername = username;
+    @Column(nullable = false)
+    private String value;
+
+    public void updateValue(String token) {
+        this.value = token;
     }
 }

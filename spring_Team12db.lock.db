@@ -1,0 +1,6 @@
+#FileLock
+#Mon Sep 05 14:45:54 KST 2022
+server=192.168.45.66\:62681
+hostName=sejin
+method=file
+id=1830c2f0fbd2512ae12dab0bbc0ecdf57c3b374a559

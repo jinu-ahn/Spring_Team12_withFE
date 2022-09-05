@@ -19,12 +19,13 @@ public class ReviewController {
         return "SUCCESS";
     }
 
-    @PutMapping("/auth/{id}")
+
+    @PutMapping("/review/{id}")
     public String update(@PathVariable Long id, @RequestBody ReviewRequestDto requestDto){
         reviewService.update(id,requestDto);
         return "SUCCESS";
     }
-    @DeleteMapping("/auth/{id}")
+    @DeleteMapping("/review/{id}")
     public String update(@PathVariable Long id){
         reviewService.delete(id);
         return "SUCCESS";
