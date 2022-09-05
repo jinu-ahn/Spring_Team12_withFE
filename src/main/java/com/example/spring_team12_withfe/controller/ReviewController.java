@@ -6,23 +6,23 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/review/")
+@RequestMapping("/api/member")
 @RestController
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @PostMapping("/auth")
+    @PostMapping("/review")
     public String createReview(@RequestBody Book_ReviewRequestDto requestDto){
         reviewService.create(requestDto);
         return "SUCCESS";
     }
 
-    @PutMapping("/auth/{id}")
+    @PutMapping("/review/{id}")
     public String update(@PathVariable Long id, @RequestBody ReviewRequestDto requestDto){
         reviewService.update(id,requestDto);
         return "SUCCESS";
     }
-    @DeleteMapping("/auth/{id}")
+    @DeleteMapping("/review/{id}")
     public String update(@PathVariable Long id){
         reviewService.delete(id);
         return "SUCCESS";

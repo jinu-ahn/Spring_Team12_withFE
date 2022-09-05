@@ -1,6 +1,18 @@
+POST http://localhost:8080/api/member/review
+Content-Type: application/json
+
+{
+  "image" : "test",
+  "title" : "test",
+  "author" : "test",
+  "publisher" : "test",
+  "review" : "testreview"
+}
+
+###
 POST http://localhost:8080/api/issue/token
 Content-Type: application/json
-Refresh-Token : eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTIiLCJleHAiOjE2NjIyMDY5MzMsImlhdCI6MTY2MjIwNjkwM30.pbA_UBsYZo-YxK-BFaus_rH99Us4CFgxIQ55hOgKufo
+Refresh-Token :  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZWppbjEyIiwiZXhwIjoxNjYyMzQwOTY1LCJpYXQiOjE2NjIzNDA5MzV9.vaYDsS-uoZ2BOtc7ta4sey3vwU5kC3cVG7goZl7W9No
 {}
 
 ###
@@ -8,8 +20,8 @@ POST http://localhost:8080/api/member/login
 Content-Type: application/json
 
 {
-  "username" : "test12",
-  "password" : "test12"
+  "username" : "sejin12",
+  "password" : "sejin12"
 }
 
 ###

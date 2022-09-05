@@ -1,37 +1,60 @@
 package com.example.spring_team12_withfe.service;
 
 import com.example.spring_team12_withfe.domain.Book;
+import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.domain.Review;
 import com.example.spring_team12_withfe.dto.Book_ReviewRequestDto;
+import com.example.spring_team12_withfe.dto.ResponseDto;
 import com.example.spring_team12_withfe.dto.ReviewRequestDto;
+import com.example.spring_team12_withfe.jwt.util.JwtUtil;
 import com.example.spring_team12_withfe.repository.BookRepository;
 import com.example.spring_team12_withfe.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class ReviewService {
     private final BookRepository bookRepository;
+
+    private final JwtUtil jwtUtil;
     private final ReviewRepository reviewRepository;
 
     @Transactional
-    public void create(Book_ReviewRequestDto requestDto) {
+    public  ResponseDto<?>  create(Book_ReviewRequestDto requestDto, HttpServletRequest request) {
+        if (null == request.getHeader("Refresh-Token")) {
+            return ResponseDto.fail("MEMBER_NOT_FOUND",
+                    "로그인이 필요합니다.");
+        }
+
+        if (null == request.getHeader("Authorization")) {
+            return ResponseDto.fail("MEMBER_NOT_FOUND",
+                    "로그인이 필요합니다.");
+        }
+
+        Member member = validateMember(request);
+        if (null == member) {
+            return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
+        }
+
         Book book = Book.builder()
                 .image(requestDto.getImage())
                 .title(requestDto.getTitle())
                 .author(requestDto.getAuthor())
+                .publisher(requestDto.getPublisher())
                 .build();
         bookRepository.saveAndFlush(book);
         Review review = Review.builder()
                 .review(requestDto.getReview())
+                .member(new Member())
                 .book(book)
                 .build();
         reviewRepository.save(review);
-
+        return ResponseDto.success(review);
     }
     @Transactional
     public void update(Long id,ReviewRequestDto requestDto){
@@ -56,5 +79,12 @@ public class ReviewService {
     }
 
 
+    @Transactional
+    public Member validateMember(HttpServletRequest request) {
+        if (!jwtUtil.tokenValidation(request.getHeader("Refresh-Token"))) {
+            return null;
+        }
+        return null;
+    }
 }
 

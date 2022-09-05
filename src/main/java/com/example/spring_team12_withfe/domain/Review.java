@@ -27,10 +27,19 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER)
     private Book book;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     public Review(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();
     }
     public void update(ReviewRequestDto requestDto){
+
         this.review = requestDto.getReview();
     }
 
