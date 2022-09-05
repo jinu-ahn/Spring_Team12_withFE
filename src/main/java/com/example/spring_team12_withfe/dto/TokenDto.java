@@ -1,15 +1,17 @@
-package com.example.spring_team12_withfe.jwt.dto;
-
+package com.example.spring_team12_withfe.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Builder
 public class TokenDto {
-
+    private String grantType;
     private String accessToken;
     private String refreshToken;
+    private Long accessTokenExpiresIn;
 }

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @PostMapping("/review")
-    public String createReview(@RequestBody Book_ReviewRequestDto requestDto){
-        reviewService.create(requestDto);
-        return "SUCCESS";
-    }
+//    @PostMapping("/review")
+//    public String createReview(@RequestBody Book_ReviewRequestDto requestDto){
+//        reviewService.create(requestDto);
+//        return "SUCCESS";
+//    }
 
     @PutMapping("/review/{id}")
     public String update(@PathVariable Long id, @RequestBody ReviewRequestDto requestDto){

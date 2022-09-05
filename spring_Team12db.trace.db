@@ -1,0 +1,246 @@
+2022-09-05 14:05:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:05:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:06:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:06:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:18:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:18:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:20:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:20:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:22:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:22:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:23:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:23:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:24:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:24:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:24:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:24:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:29:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:29:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:31:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:31:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:32:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:32:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:33:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.[*]value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=?"; expected "identifier"; SQL statement:
+select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=? [42001-214]
+2022-09-05 14:33:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.[*]value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=?"; expected "identifier"; SQL statement:
+select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=? [42001-214]
+2022-09-05 14:44:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.[*]value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=?"; expected "identifier"; SQL statement:
+select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=? [42001-214]
+2022-09-05 14:45:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "\000d\000a    create table refresh_token (\000d\000a       id bigint not null,\000d\000a        created_at timestamp,\000d\000a        modified_at timestamp,\000d\000a        [*]value varchar(255) not null,\000d\000a        member_id bigint not null,\000d\000a        primary key (id)\000d\000a    )"; expected "identifier"; SQL statement:
+
+    create table refresh_token (
+       id bigint not null,
+        created_at timestamp,
+        modified_at timestamp,
+        value varchar(255) not null,
+        member_id bigint not null,
+        primary key (id)
+    ) [42001-214]
+2022-09-05 14:45:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "REFRESH_TOKEN" not found; SQL statement:
+
+    alter table refresh_token 
+       add constraint FK5gdbafb2i76hk1ai18ah6an4w 
+       foreign key (member_id) 
+       references  [42102-214]
+2022-09-05 14:46:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.[*]value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=?"; expected "identifier"; SQL statement:
+select refreshtok0_.id as id1_3_0_, refreshtok0_.created_at as created_2_3_0_, refreshtok0_.modified_at as modified3_3_0_, refreshtok0_.member_id as member_i5_3_0_, refreshtok0_.value as value4_3_0_ from refresh_token refreshtok0_ where refreshtok0_.id=? [42001-214]
