@@ -1,6 +1,7 @@
 package com.example.spring_team12_withfe.controller;
 
-import com.example.spring_team12_withfe.dto.ResponseDto;
+
+import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.dto.member.LoginReqDto;
 import com.example.spring_team12_withfe.dto.member.MemberReqDto;
 import com.example.spring_team12_withfe.jwt.JwtFilter;

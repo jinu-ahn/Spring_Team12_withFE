@@ -1,7 +1,7 @@
 package com.example.spring_team12_withfe.domain;
 
-import com.example.spring_team12_withfe.dto.Book_ReviewRequestDto;
-import com.example.spring_team12_withfe.dto.ReviewRequestDto;
+import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
+import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Review {
+public class Review extends Timestamped{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
@@ -27,13 +27,10 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER)
     private Book book;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
 
-    public void setMember(Member member) {
-        this.member = member;
-    }
+    @JoinColumn(name = "member_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Member member;
 
     public Review(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();

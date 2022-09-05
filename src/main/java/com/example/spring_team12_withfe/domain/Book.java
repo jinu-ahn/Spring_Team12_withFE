@@ -1,6 +1,6 @@
 package com.example.spring_team12_withfe.domain;
 
-import com.example.spring_team12_withfe.dto.Book_ReviewRequestDto;
+import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class Book {
     private Long id;
 
     @Column(nullable = false)
-    private String image;
+    private String thumbnail;
 
     @Column(nullable = false)
     private String title;
@@ -30,8 +30,11 @@ public class Book {
     @Column(nullable = false)
     private String publisher;
 
+    @JoinColumn(name="member_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    Member member;
     public Book(Book_ReviewRequestDto requestDto){
-        this.image = requestDto.getImage();
+        this.thumbnail = requestDto.getThumbnail();
         this.title = requestDto.getTitle();
         this.author = requestDto.getAuthor();
         this.publisher = requestDto.getPublisher();
