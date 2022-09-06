@@ -1,7 +1,8 @@
 package com.example.spring_team12_withfe.domain;
 
-import com.example.spring_team12_withfe.dto.CommentReqDto;
+import com.example.spring_team12_withfe.dto.request.CommentReqDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Getter
 @Entity
 public class Comment {
@@ -30,6 +32,14 @@ public class Comment {
     private String comment;
 
     public Comment(CommentReqDto commentReqDto) {
+
         this.comment = commentReqDto.getComment();
+    }
+    public boolean validateMember(Member member) {
+        return !this.member.equals(member);
+    }
+
+    public void update(CommentReqDto requestDto) {
+        this.comment = requestDto.getComment();
     }
 }

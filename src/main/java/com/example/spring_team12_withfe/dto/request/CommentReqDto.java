@@ -1,4 +1,4 @@
-package com.example.spring_team12_withfe.dto;
+package com.example.spring_team12_withfe.dto.request;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,7 @@
 POST http://localhost:8080/api/member/review
 Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZWppbjEyMyIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjM3NDcwNX0.lUxvjyzfRCLKA9Z-KHB43GE1v9Ih4mQJPemtR4Jb3rM
+Refresh-Token : eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI5Nzc3MDV9.MESIFVaUKbQHrHUV3sV0YsKI1qzGQJopGQqyWejrB-4
 
 {
   "image" : "test",
