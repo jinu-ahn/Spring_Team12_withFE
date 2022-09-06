@@ -1,6 +1,7 @@
 package com.example.spring_team12_withfe.controller;
 
 
+import com.example.spring_team12_withfe.dto.Response.MypageResponseDto;
 import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.dto.member.LoginReqDto;
 import com.example.spring_team12_withfe.dto.member.MemberReqDto;
@@ -32,13 +33,12 @@ public class MemberController {
 
     @RequestMapping(value = "/member/login", method = RequestMethod.POST)
     public ResponseDto<?> login(@RequestBody @Valid LoginReqDto requestDto,
-                                HttpServletResponse response
-    ) {
+                                HttpServletResponse response) {
         return memberService.login(requestDto, response);
     }
 
     @RequestMapping(value = "/auth/member/mypage" , method = RequestMethod.GET)
-    public ResponseDto<?> mypage(HttpServletRequest request){
+    public MypageResponseDto mypage(HttpServletRequest request){
         return mypageService.mypage(request);
     }
 

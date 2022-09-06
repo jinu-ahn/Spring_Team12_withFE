@@ -6,6 +6,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class BookResponseDto {
+    private Long id;
     private String thumbnail;
     private String title;
     private String author;

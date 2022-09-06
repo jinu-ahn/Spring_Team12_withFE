@@ -9,6 +9,6 @@ import java.util.List;
 @Builder
 @Getter
 public class MypageResponseDto {
-    private String user;
-    private List<BookResponseDto> fundingList;
+    private String username;
+    private List<BookResponseDto> Book_List;
 }

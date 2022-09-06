@@ -4,12 +4,9 @@ import com.example.spring_team12_withfe.domain.Book;
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.dto.Response.BookResponseDto;
 import com.example.spring_team12_withfe.dto.Response.MypageResponseDto;
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.BookRepository;
-import com.example.spring_team12_withfe.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +21,7 @@ public class MypageService {
     private final TokenProvider tokenProvider;
 
 
-    public ResponseDto<?> mypage(HttpServletRequest request) {
+    public MypageResponseDto mypage(HttpServletRequest request) {
         Member member = validateMember(request);
 
         if(member == null)
@@ -32,11 +29,12 @@ public class MypageService {
 
         List<Book> bookList = bookRepository.findByMemberId(member.getId());
 
-        List<BookResponseDto> fundingList = new ArrayList<>();
+        List<BookResponseDto> book_List = new ArrayList<>();
 
         for(Book book : bookList){
-            fundingList.add(
+            book_List.add(
             BookResponseDto.builder()
+                    .id(book.getId())
                     .thumbnail(book.getThumbnail())
                     .title(book.getTitle())
                     .author(book.getAuthor())
@@ -46,12 +44,10 @@ public class MypageService {
         }
 
 
-        return ResponseDto.success(
-                MypageResponseDto.builder()
-                        .user(member.getUsername())
-                        .fundingList(fundingList)
-                        .build()
-        );
+        return MypageResponseDto.builder()
+                        .username(member.getUsername())
+                        .Book_List(book_List)
+                        .build();
     }
     @Transactional
     public Member validateMember(HttpServletRequest request) {

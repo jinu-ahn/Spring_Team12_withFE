@@ -13,7 +13,7 @@ public class Book_ReviewResponseDto {
     private String title;
     private String author;
     private String publisher;
-    private String user;
+    private String username;
     private String review;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

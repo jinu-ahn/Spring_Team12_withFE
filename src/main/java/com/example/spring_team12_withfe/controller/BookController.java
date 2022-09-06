@@ -1,6 +1,8 @@
 package com.example.spring_team12_withfe.controller;
 
 import com.example.spring_team12_withfe.domain.Book;
+import com.example.spring_team12_withfe.dto.Response.BooksResponseDto;
+import com.example.spring_team12_withfe.dto.Response.NaverBookResponseDto;
 import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.dto.request.BookRequestDto;
 
@@ -16,17 +18,15 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
-    private final NaverBookSearch naverBookSearch;
 
     @GetMapping("/api/books")
-    public ResponseDto<?> readBooks() {
+    public BooksResponseDto readBooks() {
         return bookService.getbooks();
     }
 
     @GetMapping("/api/books/search")
-    public List<BookRequestDto> getBooks(@RequestParam String query) {
-        String result = naverBookSearch.search(query);
-        return naverBookSearch.fromJSONtoBooks(result);
+    public NaverBookResponseDto getBooks(@RequestParam String query) {
+        return bookService.getOpenAPI(query);
     }
 
 

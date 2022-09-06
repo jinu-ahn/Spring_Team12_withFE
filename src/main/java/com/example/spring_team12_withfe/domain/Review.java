@@ -25,7 +25,7 @@ public class Review extends Timestamped{
     private String review;
 
     @JoinColumn(name = "book_id", nullable = false)
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Book book;
 
 
@@ -33,7 +33,7 @@ public class Review extends Timestamped{
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "review" , cascade = CascadeType.REMOVE)
     private List<Comment> comment;
 
     public Review(Book_ReviewRequestDto requestDto){

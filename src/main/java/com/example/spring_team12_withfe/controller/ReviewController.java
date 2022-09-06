@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/review")
+@RequestMapping("/api")
 @RestController
 public class ReviewController {
     private final ReviewService reviewService;
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/review/{id}")
     public ResponseDto<?> getreview(@PathVariable Long id) {
         return reviewService.getreview(id);
     }
 
-    @PostMapping("/auth")
+    @PostMapping("/auth/review")
     public ResponseDto<?> createReview(@RequestBody Book_ReviewRequestDto requestDto, HttpServletRequest request){
         return reviewService.create(requestDto,request);
     }
 
 
-    @PutMapping("/review/{id}")
+    @PutMapping("/auth/review/{id}")
     public ResponseDto<?> update(@PathVariable Long id, @RequestBody ReviewRequestDto requestDto){
         return reviewService.update(id,requestDto);
     }
-    @DeleteMapping("/review/{id}")
-    public ResponseDto<?> update(@PathVariable Long id){
+    @DeleteMapping("/auth/review/{id}")
+    public ResponseDto<?> delete(@PathVariable Long id){
         return reviewService.delete(id);
     }
 
