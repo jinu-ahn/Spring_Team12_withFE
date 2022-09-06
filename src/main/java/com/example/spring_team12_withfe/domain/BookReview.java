@@ -16,32 +16,42 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Review extends Timestamped{
+public class BookReview extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
+
+    @Column(nullable = false)
+    private String thumbnail;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String author;
+
+    @Column(nullable = false)
+    private String publisher;
+
     @Column
     private String review;
 
-    @JoinColumn(name = "book_id", nullable = false)
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Book book;
-
-
     @JoinColumn(name = "member_id", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Member member;
 
-    @OneToMany(mappedBy = "review" , cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "bookReview" , cascade = CascadeType.REMOVE)
     private List<Comment> comment;
 
-    public Review(Book_ReviewRequestDto requestDto){
+    public BookReview(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();
     }
     public void update(ReviewRequestDto requestDto){
-
         this.review = requestDto.getReview();
+    }
+    public boolean validateMember(Member member) {
+        return !this.member.equals(member);
     }
 
 }
