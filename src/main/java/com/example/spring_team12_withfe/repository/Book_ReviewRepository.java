@@ -14,4 +14,6 @@ public interface Book_ReviewRepository extends JpaRepository<BookReview,Long> {
 
     List<BookReview> findByMemberId(Long member_id);
 
+    List<BookReview> findAllByOrderByHeartDesc();
+
 }

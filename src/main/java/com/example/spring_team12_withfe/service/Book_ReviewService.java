@@ -12,8 +12,10 @@ import com.example.spring_team12_withfe.dto.response.CommentResponseDto;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import com.example.spring_team12_withfe.repository.CommentRepository;
+import com.example.spring_team12_withfe.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +31,32 @@ public class Book_ReviewService {
     private final Book_ReviewRepository book_reviewRepository;
     private final CommentRepository commentRepository;
     private final TokenProvider tokenProvider;
+    private final HeartRepository heartRepository;
 
+
+    @Transactional
+    public ResponseDto<?> getAllbook_review(){
+        List<BookReview> bookReviews = book_reviewRepository.findAllByOrderByHeartDesc();
+        List<Book_ReviewResponseDto> book_reviewResponseDto = new ArrayList<>();
+
+        for(BookReview book_review : bookReviews){
+            book_reviewResponseDto.add(
+                    Book_ReviewResponseDto.builder()
+                            .id(book_review.getId())
+                            .username(book_review.getMember().getUsername())
+                            .thumbnail(book_review.getThumbnail())
+                            .title(book_review.getTitle())
+                            .author(book_review.getAuthor())
+                            .publisher(book_review.getPublisher())
+                            .review(book_review.getReview())
+                            .heart(heartRepository.countHeartByBookReviewId(book_review.getId()))
+                            .createdAt(book_review.getCreatedAt())
+                            .modifiedAt(book_review.getModifiedAt())
+                            .build()
+            );
+        }
+        return ResponseDto.success(book_reviewResponseDto);
+    }
 
 
     // 전체 책/리뷰 조회
@@ -68,6 +95,7 @@ public class Book_ReviewService {
                         .publisher(book_review.getPublisher())
                         .review(book_review.getReview())
                         .comments(commentResponseDtoList)
+                        .heart(heartRepository.countHeartByBookReviewId(id))
                         .createdAt(book_review.getCreatedAt())
                         .modifiedAt(book_review.getModifiedAt())
                         .build()
@@ -90,6 +118,7 @@ public class Book_ReviewService {
                 .author(requestDto.getAuthor())
                 .publisher(requestDto.getPublisher())
                 .review(requestDto.getReview())
+                .heart(0L)
                 .member(member)
                 .build();
 
@@ -112,6 +141,7 @@ public class Book_ReviewService {
                         .publisher(book_review.getPublisher())
                         .username(book_review.getMember().getUsername())
                         .review(book_review.getReview())
+                        .heart(heartRepository.countHeartByBookReviewId(book_review.getId()))
                         .createdAt(book_review.getCreatedAt())
                         .modifiedAt(book_review.getModifiedAt())
                         .build()

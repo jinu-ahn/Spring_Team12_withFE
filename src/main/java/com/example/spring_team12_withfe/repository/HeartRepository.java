@@ -12,5 +12,5 @@ public interface HeartRepository extends JpaRepository<Heart, Long> {
     // 데이터 타입 뿐 아니라 변수 명도 동일해야 한다.
     List<Heart> findByMemberIdAndBookReviewId(Long member, Long bookReview);
     // 특정 리뷰에 좋아요가 총 몇개 인지 셀때 사용할 메소드
-    int countBybookReview(BookReview review);
+    Long countHeartByBookReviewId(Long bookReview_id);
 }

@@ -18,6 +18,7 @@ public class Book_ReviewResponseDto {
     private String username;
     private String review;
     private List<CommentResponseDto> comments;
+    private Long heart;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }
