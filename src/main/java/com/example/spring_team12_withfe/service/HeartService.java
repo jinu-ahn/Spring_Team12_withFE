@@ -59,6 +59,7 @@ public class HeartService {
             if (heart.getMember().equals(member)) {//이미 해당 유저가 좋아요 했을 경우
                 check = true; //좋아요
                 System.out.println("이미 좋아요 한 게시물 입니다.");
+                book_review.setHeart(book_review.getHeart() -1);
                 heartRepository.delete(heart);//좋아요 해제
                 break;
             }
@@ -70,6 +71,7 @@ public class HeartService {
                         .bookReview(book_review)
                         .build();
                 heartRepository.save(heart);// 좋아요 저장
+                book_review.setHeart(book_review.getHeart() + 1);
             }
         return ResponseDto.success("좋아요 버튼이 작동됐습니다");
         }

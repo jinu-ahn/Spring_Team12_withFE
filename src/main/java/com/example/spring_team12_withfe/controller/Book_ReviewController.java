@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 public class Book_ReviewController {
     private final Book_ReviewService book_reviewService;
 
+    @GetMapping("/home")
+    public ResponseDto<?> getAllbook_review(){
+        return book_reviewService.getAllbook_review();
+    }
 
     @GetMapping("/review/{id}")
     public ResponseDto<?> getbook_review(@PathVariable Long id) {

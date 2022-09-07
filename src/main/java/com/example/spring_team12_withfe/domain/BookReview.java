@@ -2,11 +2,12 @@ package com.example.spring_team12_withfe.domain;
 
 import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class BookReview extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +39,9 @@ public class BookReview extends Timestamped {
     @Column
     private String review;
 
+    @Column
+    private Long heart = 0L;
+
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     private Member member;
@@ -44,9 +49,11 @@ public class BookReview extends Timestamped {
     @OneToMany(mappedBy = "bookReview" , cascade = CascadeType.REMOVE)
     private List<Comment> comment;
 
-    @JsonIgnore// Restcontroller에서  Heart엔티티를 JSON으로 반환하는 과정에서 recursion 에러 발생 => serialize(직렬화) 과정에서 무한재귀 발생 해결방안
-    @OneToMany(mappedBy = "bookReview", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Heart> heart;
+
+//    @JsonIgnore// Restcontroller에서  Heart엔티티를 JSON으로 반환하는 과정에서 recursion 에러 발생 => serialize(직렬화) 과정에서 무한재귀 발생 해결방안
+//    @OneToMany(mappedBy = "bookReview", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Heart> heart;
+
 
     public BookReview(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();
