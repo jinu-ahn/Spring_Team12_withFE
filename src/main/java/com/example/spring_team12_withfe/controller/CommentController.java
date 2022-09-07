@@ -1,7 +1,7 @@
 package com.example.spring_team12_withfe.controller;
 
 
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
+import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.dto.request.CommentReqDto;
 import com.example.spring_team12_withfe.service.CommentService;
 import lombok.RequiredArgsConstructor;

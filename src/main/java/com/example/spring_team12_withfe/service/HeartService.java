@@ -1,7 +1,8 @@
 package com.example.spring_team12_withfe.service;
 
-import com.example.spring_team12_withfe.domain.Review;
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
+
+import com.example.spring_team12_withfe.domain.BookReview;
+import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.domain.Heart;
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
@@ -21,7 +22,7 @@ import java.util.List;
 public class HeartService {
     private final HeartRepository heartRepository;
     
-    private final ReviewService reviewService;
+    private final Book_ReviewService book_reviewService;
     private final TokenProvider tokenProvider;
 
     // 좋아요 + 좋아요 해제 둘다 가능
@@ -38,8 +39,8 @@ public class HeartService {
             return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
         }
 
-        Review review = reviewService.isParesentReview(reviewId);
-        if (null == review) {
+        BookReview book_review = book_reviewService.isParesentReview(reviewId);
+        if (null == book_review) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 id 입니다.");
         }
 //        // 동일한 리뷰에 동일한 계정으로 이미 좋아요한 내역이 있을 경우 -> 좋아요 못하게..
@@ -60,7 +61,7 @@ public class HeartService {
                 System.out.println("좋아요");
                 Heart heart = Heart.builder()
                         .member(member)
-                        .review(review)
+                        .review(book_review)
                         .build();
                 heartRepository.save(heart);// 좋아요 저장
             }

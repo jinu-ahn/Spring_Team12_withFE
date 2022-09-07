@@ -1,7 +1,7 @@
 package com.example.spring_team12_withfe.controller;
 
 
-import com.example.spring_team12_withfe.dto.Response.NaverBookResponseDto;
+import com.example.spring_team12_withfe.dto.response.NaverBookResponseDto;
 import com.example.spring_team12_withfe.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

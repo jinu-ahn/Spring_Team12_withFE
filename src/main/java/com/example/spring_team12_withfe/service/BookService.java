@@ -1,8 +1,8 @@
 package com.example.spring_team12_withfe.service;
 
 
-import com.example.spring_team12_withfe.dto.Response.BookResponseDto;
-import com.example.spring_team12_withfe.dto.Response.NaverBookResponseDto;
+import com.example.spring_team12_withfe.dto.response.BookResponseDto;
+import com.example.spring_team12_withfe.dto.response.NaverBookResponseDto;
 import com.example.spring_team12_withfe.dto.request.BookRequestDto;
 import com.example.spring_team12_withfe.utils.NaverBookSearch;
 import lombok.RequiredArgsConstructor;

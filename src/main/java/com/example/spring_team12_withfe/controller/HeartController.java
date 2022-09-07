@@ -1,6 +1,6 @@
 package com.example.spring_team12_withfe.controller;
 
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
+import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.service.HeartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
