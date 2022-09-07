@@ -1,16 +1,13 @@
 package com.example.spring_team12_withfe.controller;
 
 
-import com.example.spring_team12_withfe.dto.Response.MypageResponseDto;
 import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.dto.member.LoginReqDto;
 import com.example.spring_team12_withfe.dto.member.MemberReqDto;
-import com.example.spring_team12_withfe.jwt.JwtFilter;
-import com.example.spring_team12_withfe.security.user.UserDetailsImpl;
+import com.example.spring_team12_withfe.dto.response.MypageResponseDto;
 import com.example.spring_team12_withfe.service.MemberService;
 import com.example.spring_team12_withfe.service.MypageService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

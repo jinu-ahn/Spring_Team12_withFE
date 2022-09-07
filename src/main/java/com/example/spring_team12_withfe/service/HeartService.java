@@ -1,10 +1,11 @@
 package com.example.spring_team12_withfe.service;
 
-import com.example.spring_team12_withfe.domain.Review;
+import com.example.spring_team12_withfe.domain.BookReview;
 import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.domain.Heart;
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
+import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import com.example.spring_team12_withfe.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,14 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class HeartService {
+
+    private final Book_ReviewRepository book_reviewRepository;
     private final HeartRepository heartRepository;
-    
-    private final ReviewService reviewService;
+
     private final TokenProvider tokenProvider;
 
     // 좋아요 + 좋아요 해제 둘다 가능
@@ -38,8 +41,8 @@ public class HeartService {
             return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
         }
 
-        Review review = reviewService.isParesentReview(reviewId);
-        if (null == review) {
+        BookReview book_review =  isPresentBook_review(reviewId);
+        if (null == book_review) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 id 입니다.");
         }
 //        // 동일한 리뷰에 동일한 계정으로 이미 좋아요한 내역이 있을 경우 -> 좋아요 못하게..
@@ -60,7 +63,7 @@ public class HeartService {
                 System.out.println("좋아요");
                 Heart heart = Heart.builder()
                         .member(member)
-                        .review(review)
+                        .review(book_review)
                         .build();
                 heartRepository.save(heart);// 좋아요 저장
             }
@@ -73,5 +76,11 @@ public class HeartService {
             return null;
         }
         return tokenProvider.getMemberFromAuthentication();
+    }
+
+    @Transactional(readOnly = true)
+    public BookReview isPresentBook_review(Long id) {
+        Optional<BookReview> optionalBook_review = book_reviewRepository.findById(id);
+        return optionalBook_review.orElse(null);
     }
 }

@@ -1,7 +1,6 @@
 package com.example.spring_team12_withfe.dto;
 
 
-import com.example.spring_team12_withfe.domain.Review;
 import lombok.*;
 
 @Getter

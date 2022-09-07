@@ -2,8 +2,8 @@ package com.example.spring_team12_withfe.service;
 
 import com.example.spring_team12_withfe.domain.BookReview;
 import com.example.spring_team12_withfe.domain.Member;
-import com.example.spring_team12_withfe.dto.Response.Book_ReviewResponseDto;
-import com.example.spring_team12_withfe.dto.Response.MypageResponseDto;
+import com.example.spring_team12_withfe.dto.response.Book_ReviewResponseDto;
+import com.example.spring_team12_withfe.dto.response.MypageResponseDto;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import lombok.RequiredArgsConstructor;
