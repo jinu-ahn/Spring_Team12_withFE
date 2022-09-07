@@ -15,15 +15,15 @@ public class Heart {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "review_id")
-    private BookReview review;
+    @JoinColumn(name = "bookReview_id")
+    private BookReview bookReview;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public Heart(BookReview review, Member member){
-        this.review = review;
+    public Heart(BookReview bookReview, Member member){
+        this.bookReview = bookReview;
         this.member = member;
     }
 

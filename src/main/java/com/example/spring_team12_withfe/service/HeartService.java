@@ -29,7 +29,7 @@ public class HeartService {
 
     // 좋아요 + 좋아요 해제 둘다 가능
     @Transactional
-    public ResponseDto<?> heart(Long reviewId, HttpServletRequest request) throws IOException {
+    public ResponseDto<?> heart(Long bookReview_id, HttpServletRequest request) throws IOException {
 
         if (null == request.getHeader("Authorization")) {
             return ResponseDto.fail("MEMBER_NOT_FOUND",
@@ -41,7 +41,7 @@ public class HeartService {
             return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
         }
 
-        BookReview book_review =  isPresentBook_review(reviewId);
+        BookReview book_review =  isPresentBook_review(bookReview_id);
         if (null == book_review) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 id 입니다.");
         }
@@ -49,7 +49,7 @@ public class HeartService {
 //        if (heartRepository.findHeartByMemberAndReview(heartDto.getReviewId(), heartDto.getMemberId()).isPresent())
 //            throw new IllegalArgumentException("ALREADY_HEARTED");
 
-        List<Heart> reviewHeart = heartRepository.findByMemberIdAndReviewId(member.getId(), reviewId);
+        List<Heart> reviewHeart = heartRepository.findByMemberIdAndBookReviewId(member.getId(), bookReview_id);
         boolean check = false;//안좋아요
         for (Heart heart : reviewHeart ) {
             if (heart.getMember().equals(member)) {//이미 해당 유저가 좋아요 했을 경우
@@ -63,7 +63,7 @@ public class HeartService {
                 System.out.println("좋아요");
                 Heart heart = Heart.builder()
                         .member(member)
-                        .review(book_review)
+                        .bookReview(book_review)
                         .build();
                 heartRepository.save(heart);// 좋아요 저장
             }

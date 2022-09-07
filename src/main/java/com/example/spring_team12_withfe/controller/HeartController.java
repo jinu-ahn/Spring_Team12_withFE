@@ -16,9 +16,9 @@ public class HeartController {
     private final HeartService heartService;
 
     // 좋아요 + 좋아요 해제 둘다 가능
-    @PostMapping("/{reviewId}")
-    public ResponseDto<?> heart(@PathVariable Long reviewId, HttpServletRequest request) throws IOException {
-        return heartService.heart(reviewId,request);
+    @PostMapping("/{bookReview_id}")
+    public ResponseDto<?> heart(@PathVariable Long bookReview_id, HttpServletRequest request) throws IOException {
+        return heartService.heart(bookReview_id,request);
     }
 
 //    @DeleteMapping

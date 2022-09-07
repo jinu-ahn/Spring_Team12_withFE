@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface HeartRepository extends JpaRepository<Heart, Long> {
     // 동일한 리뷰에 동일한 계정으로 이미 좋아요한 내역이 있는지 찾을 때 사용할 메소드
-    List<Heart> findByMemberIdAndReviewId(Long member, Long review);
+    //레포지토리 쿼리메소드 이름은 엔티티의 컬럼 변수명이랑 동일해야한다(반환타입X)
+    List<Heart> findByMemberIdAndBookReviewId(Long member, Long bookReview_id);
     // 특정 리뷰에 좋아요가 총 몇개 인지 셀때 사용할 메소드
-    int countByReview(BookReview review);
+    int countByBookReview(BookReview review);
 }
