@@ -1,14 +1,16 @@
 package com.example.spring_team12_withfe.service;
 
+
 import com.example.spring_team12_withfe.domain.Member;
-import com.example.spring_team12_withfe.domain.Review;
 import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.domain.Comment;
 import com.example.spring_team12_withfe.dto.request.CommentReqDto;
 import com.example.spring_team12_withfe.dto.response.CommentResponseDto;
+import com.example.spring_team12_withfe.domain.BookReview;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
+import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
+
 import com.example.spring_team12_withfe.repository.CommentRepository;
-import com.example.spring_team12_withfe.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,14 +23,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class CommentService {
+    private final Book_ReviewRepository book_reviewRepository;
 
-
-    private final ReviewService reviewService;
     private final CommentRepository commentRepository;
 
-    private final ReviewRepository reviewRepository;
     private final TokenProvider tokenProvider;
-
     //댓글 등록하기
     @Transactional
     public ResponseDto<?> createComment(CommentReqDto commentReqDto, HttpServletRequest request) {
@@ -43,26 +42,34 @@ public class CommentService {
             return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
         }
 
-        Review review = reviewService.isParesentReview(commentReqDto.getReviewId());
-        if (null == review) {
+        BookReview book_review = isPresentBook_review(commentReqDto.getReviewId());
+        if (null == book_review) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 id 입니다.");
         }
         Comment comment = Comment.builder()
                 .member(member)
-                .review(review)
+                .bookReview(book_review)
                 .comment(commentReqDto.getComment())
                 .build();
         commentRepository.save(comment);
         return ResponseDto.success(
                 CommentResponseDto.builder()
                         .id(comment.getId())
-                        .author(member.getUsername())
-                        .content(comment.getComment())
+                        .username(member.getUsername())
+                        .comment(comment.getComment())
+                        .createdAt(comment.getCreatedAt())
+                        .modifiedAt(comment.getModifiedAt())
                         .build()
         );
     }
 
-    //댓글 보여주기
+    @Transactional(readOnly = true)
+    public BookReview isPresentBook_review(Long id) {
+        Optional<BookReview> optionalBook_review = book_reviewRepository.findById(id);
+        return optionalBook_review.orElse(null);
+    }
+
+        //댓글 보여주기
     public ResponseDto<?> showComment() {
         List<Comment> commentList = commentRepository.findAll();
         List<CommentResponseDto> commentResponseDtoList = new ArrayList<>();
@@ -71,10 +78,10 @@ public class CommentService {
             commentResponseDtoList.add(
                     CommentResponseDto.builder()
                             .id(comment.getId())
-                            .author(comment.getMember().getUsername())
-                            .content(comment.getComment())
-                            .createdAt(comment.getMember().getCreatedAt())
-                            .modifiedAt(comment.getReview().getModifiedAt())
+                            .username(comment.getMember().getUsername())
+                            .comment(comment.getComment())
+                            .createdAt(comment.getCreatedAt())
+                            .modifiedAt(comment.getModifiedAt())
                             .build()
 
             );
@@ -106,8 +113,8 @@ public class CommentService {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 댓글 id 입니다.");
         }
 
-        Review review = reviewService.isParesentReview(requestDto.getReviewId());
-        if (review == null) {
+        BookReview book_review =  isPresentBook_review(requestDto.getReviewId());
+        if (book_review == null) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 id 입니다.");
         }
 
@@ -118,9 +125,9 @@ public class CommentService {
         return ResponseDto.success(
                 CommentResponseDto.builder()
                         .id(comment.getId())
-                        .author(comment.getMember().getUsername())
-                        .content(comment.getComment())
-                        .createdAt(comment.getReview().getCreatedAt())
+                        .username(comment.getMember().getUsername())
+                        .comment(comment.getComment())
+                        .createdAt(comment.getCreatedAt())
                         .build());
     }
 

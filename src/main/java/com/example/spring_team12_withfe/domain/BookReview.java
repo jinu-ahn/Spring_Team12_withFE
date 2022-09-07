@@ -9,35 +9,49 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
-public class Review extends Timestamped{
+public class BookReview extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
+
+    @Column(nullable = false)
+    private String thumbnail;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String author;
+
+    @Column(nullable = false)
+    private String publisher;
+
     @Column
     private String review;
 
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
-    private Book book;
-
-
-    @JoinColumn(name = "member_id")
-    @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    public Review(Book_ReviewRequestDto requestDto){
+    @OneToMany(mappedBy = "bookReview" , cascade = CascadeType.REMOVE)
+    private List<Comment> comment;
+
+    public BookReview(Book_ReviewRequestDto requestDto){
         this.review = requestDto.getReview();
     }
     public void update(ReviewRequestDto requestDto){
-
         this.review = requestDto.getReview();
+    }
+    public boolean validateMember(Member member) {
+        return !this.member.equals(member);
     }
 
 }

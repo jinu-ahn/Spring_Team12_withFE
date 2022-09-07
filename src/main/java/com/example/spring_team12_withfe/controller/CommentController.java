@@ -1,9 +1,9 @@
 package com.example.spring_team12_withfe.controller;
 
+
 import com.example.spring_team12_withfe.dto.Response.ResponseDto;
 import com.example.spring_team12_withfe.dto.request.CommentReqDto;
 import com.example.spring_team12_withfe.service.CommentService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ public class CommentController {
 
     //댓글 등록하기
     @PostMapping("/comment")
-    public ResponseDto<?> createComment(@RequestBody CommentReqDto commentReqDto,  HttpServletRequest request){
+    public ResponseDto<?> createComment(@RequestBody CommentReqDto commentReqDto,  HttpServletRequest request) {
         return commentService.createComment(commentReqDto, request);
     }
     //댓글 보여주기

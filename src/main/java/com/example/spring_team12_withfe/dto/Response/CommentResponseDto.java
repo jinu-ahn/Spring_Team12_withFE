@@ -1,13 +1,11 @@
 package com.example.spring_team12_withfe.dto.response;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Builder
 @Getter
@@ -15,9 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CommentResponseDto {
     private Long id;
-    private String author;
-    private String content;
-    private int cntLikes;
+    private String username;
+    private String comment;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }
