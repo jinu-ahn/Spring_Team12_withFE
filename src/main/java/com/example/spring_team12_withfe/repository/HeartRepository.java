@@ -11,5 +11,5 @@ public interface HeartRepository extends JpaRepository<Heart, Long> {
     //레포지토리 쿼리메소드 이름은 엔티티의 컬럼 변수명이랑 동일해야한다(반환타입X)
     List<Heart> findByMemberIdAndBookReviewId(Long member, Long bookReview_id);
     // 특정 리뷰에 좋아요가 총 몇개 인지 셀때 사용할 메소드
-    int countByBookReview(BookReview review);
+    Long countHeartByBookReviewId( Long bookReview_id);
 }

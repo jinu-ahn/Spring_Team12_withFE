@@ -1,5 +1,6 @@
 package com.example.spring_team12_withfe.dto.response;
 
+import com.example.spring_team12_withfe.domain.Heart;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -18,6 +19,7 @@ public class Book_ReviewResponseDto {
     private String username;
     private String review;
     private List<CommentResponseDto> comments;
+    private Long heart;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }

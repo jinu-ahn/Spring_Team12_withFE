@@ -12,6 +12,7 @@ import com.example.spring_team12_withfe.dto.response.CommentResponseDto;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import com.example.spring_team12_withfe.repository.CommentRepository;
+import com.example.spring_team12_withfe.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,8 @@ import java.util.Optional;
 @Slf4j
 public class Book_ReviewService {
     private final Book_ReviewRepository book_reviewRepository;
+
+    private final HeartRepository heartRepository;
     private final CommentRepository commentRepository;
     private final TokenProvider tokenProvider;
 
@@ -67,6 +70,7 @@ public class Book_ReviewService {
                         .publisher(book_review.getPublisher())
                         .review(book_review.getReview())
                         .comments(commentResponseDtoList)
+                        .heart(heartRepository.countHeartByBookReviewId(id))
                         .createdAt(book_review.getCreatedAt())
                         .modifiedAt(book_review.getModifiedAt())
                         .build()
