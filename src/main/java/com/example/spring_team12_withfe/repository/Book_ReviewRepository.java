@@ -9,6 +9,9 @@ import java.util.Optional;
 
 public interface Book_ReviewRepository extends JpaRepository<BookReview,Long> {
     Optional<BookReview> findById(Long id);
+
+    List<BookReview> findByMemberIdAndTitleAndAuthor(Long member_id, String title, String Author);
+
     List<BookReview> findByMemberId(Long member_id);
 
 }

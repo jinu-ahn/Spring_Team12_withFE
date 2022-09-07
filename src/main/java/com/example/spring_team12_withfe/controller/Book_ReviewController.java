@@ -16,8 +16,8 @@ public class Book_ReviewController {
 
 
     @GetMapping("/review/{id}")
-    public ResponseDto<?> getbook_review(@PathVariable Long id,HttpServletRequest request) {
-        return book_reviewService.getbook_review(id,request);
+    public ResponseDto<?> getbook_review(@PathVariable Long id) {
+        return book_reviewService.getbook_review(id);
     }
 
     @PostMapping("/auth/review")
