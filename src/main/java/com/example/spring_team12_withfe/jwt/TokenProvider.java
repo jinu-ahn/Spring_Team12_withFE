@@ -3,7 +3,7 @@ package com.example.spring_team12_withfe.jwt;
 import com.example.spring_team12_withfe.Authority;
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.domain.RefreshToken;
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
+import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.dto.TokenDto;
 import com.example.spring_team12_withfe.repository.RefreshTokenRepository;
 import com.example.spring_team12_withfe.security.user.UserDetailsImpl;

@@ -32,8 +32,7 @@ public class MypageService {
         List<Book_ReviewResponseDto> book_review_List = new ArrayList<>();
 
         for(BookReview book_review : book_reviewList){
-            book_review_List.add(
-            Book_ReviewResponseDto.builder()
+            book_review_List.add(com.example.spring_team12_withfe.dto.response.Book_ReviewResponseDto.builder()
                     .id(book_review.getId())
                     .username(member.getUsername())
                     .thumbnail(book_review.getThumbnail())

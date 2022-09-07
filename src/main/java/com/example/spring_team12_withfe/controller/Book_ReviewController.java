@@ -1,8 +1,7 @@
 package com.example.spring_team12_withfe.controller;
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
+import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
-import com.example.spring_team12_withfe.service.BookService;
 import com.example.spring_team12_withfe.service.Book_ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

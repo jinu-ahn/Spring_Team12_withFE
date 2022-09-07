@@ -1,7 +1,8 @@
 package com.example.spring_team12_withfe.service;
 
 import com.example.spring_team12_withfe.domain.BookReview;
-import com.example.spring_team12_withfe.dto.Response.ResponseDto;
+import com.example.spring_team12_withfe.dto.response.ResponseDto;
+
 import com.example.spring_team12_withfe.domain.Heart;
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
@@ -24,7 +25,6 @@ public class HeartService {
 
     private final Book_ReviewRepository book_reviewRepository;
     private final HeartRepository heartRepository;
-
     private final TokenProvider tokenProvider;
 
     // 좋아요 + 좋아요 해제 둘다 가능
