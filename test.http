@@ -22,8 +22,8 @@ POST http://localhost:8080/api/member/login
 Content-Type: application/json
 
 {
-  "username" : "sejin12",
-  "password" : "sejin12"
+  "username" : "sejin123",
+  "password" : "sejin123"
 }
 
 ###
