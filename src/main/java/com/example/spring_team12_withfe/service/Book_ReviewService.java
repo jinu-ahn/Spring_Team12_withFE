@@ -34,25 +34,25 @@ public class Book_ReviewService {
     private final TokenProvider tokenProvider;
 
 
-    @Transactional
-    public ResponseDto<?> getbook_review(Long id, HttpServletRequest request){
-        Member member = validateMember(request);
 
-        if(member == null)
-            return ResponseDto.fail("INVALID TOKEN","Token이 유효하지 않습니다.");
+    // 전체 책/리뷰 조회
+    @Transactional
+    public ResponseDto<?> getbook_review(Long id){
 
         BookReview book_review = isParesentReview(id);
         if(book_review == null)
             ResponseDto.fail("NOT_FOUND_REVIEW" ,"리뷰가 존재하지 않습니다.");
 
+
         List<Comment> commentList= commentRepository.findAllByBookReview(book_review);
         List<CommentResponseDto> commentResponseDtoList = new ArrayList<>();
+
 
         for(Comment comment:commentList){
             commentResponseDtoList.add(
                     CommentResponseDto.builder()
                             .id(comment.getId())
-                            .username(member.getUsername())
+                            .username(comment.getMember().getUsername())
                             .comment(comment.getComment())
                             .createdAt(comment.getCreatedAt())
                             .modifiedAt(comment.getModifiedAt())
@@ -60,10 +60,11 @@ public class Book_ReviewService {
             );
         }
 
+
         return ResponseDto.success(
                 Book_ReviewResponseDto.builder()
                         .id(book_review.getId())
-                        .username(member.getUsername())
+                        .username(book_review.getMember().getUsername())
                         .thumbnail(book_review.getThumbnail())
                         .title(book_review.getTitle())
                         .author(book_review.getAuthor())
@@ -85,6 +86,8 @@ public class Book_ReviewService {
             throw new NullPointerException("Token이 유효하지 않습니다.");
         }
 
+
+
         BookReview book_review = BookReview.builder()
                 .thumbnail(requestDto.getThumbnail())
                 .title(requestDto.getTitle())
@@ -93,6 +96,15 @@ public class Book_ReviewService {
                 .review(requestDto.getReview())
                 .member(member)
                 .build();
+
+
+        // 유저 ID, 책 제목, 책 저자만 가져오기
+        List<BookReview> bookReview = book_reviewRepository.findByMemberIdAndTitleAndAuthor(member.getId(),requestDto.getTitle(), requestDto.getAuthor());
+
+        // 같은 책/리뷰에 중복 작성 확인
+        if(bookReview.size() == 1)
+            return ResponseDto.fail("ALREADY_REVIEW","이미 리뷰를 작성하셨습니다.");
+
         book_reviewRepository.save(book_review);
 
         return ResponseDto.success(
@@ -154,12 +166,12 @@ public class Book_ReviewService {
         return ResponseDto.success("");
     }
 
+
     @Transactional
     public BookReview isParesentReview(Long id){
         Optional<BookReview> optionalPost = book_reviewRepository.findById(id);
         return optionalPost.orElse(null);
     }
-
 
     public Member validateMember(HttpServletRequest request) {
         if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
