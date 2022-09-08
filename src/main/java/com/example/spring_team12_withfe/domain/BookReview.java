@@ -40,11 +40,13 @@ public class BookReview extends Timestamped {
     private String review;
 
     @Column
-    private Long heartCnt = 0L;
+    private Long heart_cnt = 0L;//개수 보여줄 용도
+
 
     @JoinColumn(name = "member_id", nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     private Member member;
+
 
     @OneToMany(mappedBy = "bookReview", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comment;
@@ -52,6 +54,7 @@ public class BookReview extends Timestamped {
 
     @JsonIgnore// Restcontroller에서  Heart엔티티를 JSON으로 반환하는 과정에서 recursion 에러 발생 => serialize(직렬화) 과정에서 무한재귀 발생 해결방안
     @OneToMany(mappedBy = "bookReview", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    //지우는 용도
     private List<Heart> heart;
 
 
@@ -65,7 +68,7 @@ public class BookReview extends Timestamped {
         return !this.member.equals(member);
     }
     public void setHeartCnt(Long heartCnt){
-        this.heartCnt = heartCnt;
+        this.heart_cnt = heartCnt;
     }
 
 }

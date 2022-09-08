@@ -34,6 +34,12 @@ public class MemberController {
         return memberService.login(requestDto, response);
     }
 
+    @RequestMapping(value = "/member/logout", method = RequestMethod.POST)
+    public ResponseDto<?> logout(HttpServletRequest request) {
+        return memberService.logout(request);
+    }
+
+
     @RequestMapping(value = "/auth/member/mypage" , method = RequestMethod.GET)
     public MypageResponseDto mypage(HttpServletRequest request,
                                     @RequestParam("page")int page,
