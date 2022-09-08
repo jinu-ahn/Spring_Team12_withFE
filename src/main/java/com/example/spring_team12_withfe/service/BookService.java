@@ -27,6 +27,7 @@ public class BookService {
         for(BookRequestDto book : naver_book){
             books.add(
                     BookResponseDto.builder()
+                            .id(book.getId())
                             .thumbnail(book.getThumbnail())
                             .title(book.getTitle())
                             .author(book.getAuthor())

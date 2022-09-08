@@ -21,7 +21,7 @@ public class NaverBookSearch {
 
         HttpEntity<String> requestEntity = new HttpEntity<String>(body, headers);
         ResponseEntity<String> responseEntity = rest.exchange("https://openapi.naver.com/v1/search/book.json?query=" + query, HttpMethod.GET, requestEntity, String.class);
-
+        System.out.println(responseEntity);
         return responseEntity.getBody();
     }
 

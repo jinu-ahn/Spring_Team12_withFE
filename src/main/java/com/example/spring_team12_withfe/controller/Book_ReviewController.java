@@ -1,4 +1,5 @@
 package com.example.spring_team12_withfe.controller;
+import com.example.spring_team12_withfe.dto.response.B_ResponseDto;
 import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
@@ -15,8 +16,10 @@ public class Book_ReviewController {
     private final Book_ReviewService book_reviewService;
 
     @GetMapping("/home")
-    public ResponseDto<?> getAllbook_review(){
-        return book_reviewService.getAllbook_review();
+    public B_ResponseDto<?> getAllbook_review(@RequestParam("page")int page,
+                                              @RequestParam("size")int size){
+//        page = page - 1;
+        return book_reviewService.getAllbook_review(page, size);
     }
 
     @GetMapping("/review/{id}")
