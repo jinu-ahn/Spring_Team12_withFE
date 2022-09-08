@@ -38,7 +38,6 @@ public class MemberController {
     public MypageResponseDto mypage(HttpServletRequest request,
                                     @RequestParam("page")int page,
                                     @RequestParam("size")int size){
-        page = page-1;
         return mypageService.mypage(request,page,size);
     }
 

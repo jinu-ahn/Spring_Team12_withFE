@@ -18,7 +18,6 @@ public class Book_ReviewController {
     @GetMapping("/home")
     public B_ResponseDto<?> getAllbook_review(@RequestParam("page")int page,
                                               @RequestParam("size")int size){
-//        page = page - 1;
         return book_reviewService.getAllbook_review(page, size);
     }
 

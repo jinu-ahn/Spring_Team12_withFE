@@ -29,7 +29,6 @@ import java.util.Optional;
 public class Book_ReviewService {
     private final Book_ReviewRepository book_reviewRepository;
 
-    private final HeartRepository heartRepository;
     private final CommentRepository commentRepository;
     private final TokenProvider tokenProvider;
 
@@ -37,7 +36,7 @@ public class Book_ReviewService {
     @Transactional
     public B_ResponseDto<?> getAllbook_review(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
-        Page<BookReview> bookReviews = book_reviewRepository.findAllByOrderByHeartDesc(pageable);
+        Page<BookReview> bookReviews = book_reviewRepository.findAllByOrderByHeartCntDesc(pageable);
         List<Book_ReviewResponseDto> book_reviewResponseDto = new ArrayList<>();
 
         for(BookReview book_review : bookReviews){
@@ -50,7 +49,7 @@ public class Book_ReviewService {
                             .author(book_review.getAuthor())
                             .publisher(book_review.getPublisher())
                             .review(book_review.getReview())
-                            .heart(heartRepository.countHeartByBookReviewId(book_review.getId()))
+                            .heart(book_review.getHeartCnt())
                             .createdAt(book_review.getCreatedAt())
                             .modifiedAt(book_review.getModifiedAt())
                             .build()
@@ -95,7 +94,7 @@ public class Book_ReviewService {
                         .publisher(book_review.getPublisher())
                         .review(book_review.getReview())
                         .comments(commentResponseDtoList)
-                        .heart(heartRepository.countHeartByBookReviewId(id))
+                        .heart(book_review.getHeartCnt())
                         .createdAt(book_review.getCreatedAt())
                         .modifiedAt(book_review.getModifiedAt())
                         .build()
@@ -118,7 +117,7 @@ public class Book_ReviewService {
                 .author(requestDto.getAuthor())
                 .publisher(requestDto.getPublisher())
                 .review(requestDto.getReview())
-                .heart(0L)
+                .heartCnt(0L)
                 .member(member)
                 .build();
 
@@ -141,7 +140,7 @@ public class Book_ReviewService {
                         .publisher(book_review.getPublisher())
                         .username(book_review.getMember().getUsername())
                         .review(book_review.getReview())
-                        .heart(heartRepository.countHeartByBookReviewId(book_review.getId()))
+                        .heart(book_review.getHeartCnt())
                         .createdAt(book_review.getCreatedAt())
                         .modifiedAt(book_review.getModifiedAt())
                         .build()

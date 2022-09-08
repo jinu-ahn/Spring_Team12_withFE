@@ -16,6 +16,6 @@ public interface Book_ReviewRepository extends JpaRepository<BookReview,Long> {
 
     Page<BookReview> findByMemberId(Long member_id,Pageable pageable);
 
-    Page<BookReview> findAllByOrderByHeartDesc(Pageable pageable);
+    Page<BookReview> findAllByOrderByHeartCntDesc(Pageable pageable);
 
 }
