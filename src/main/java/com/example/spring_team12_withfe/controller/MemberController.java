@@ -35,8 +35,11 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/auth/member/mypage" , method = RequestMethod.GET)
-    public MypageResponseDto mypage(HttpServletRequest request){
-        return mypageService.mypage(request);
+    public MypageResponseDto mypage(HttpServletRequest request,
+                                    @RequestParam("page")int page,
+                                    @RequestParam("size")int size){
+        page = page-1;
+        return mypageService.mypage(request,page,size);
     }
 
 //    @GetMapping("/issue/token")

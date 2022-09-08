@@ -3,19 +3,18 @@ package com.example.spring_team12_withfe.service;
 import com.example.spring_team12_withfe.domain.Comment;
 import com.example.spring_team12_withfe.domain.Member;
 import com.example.spring_team12_withfe.domain.BookReview;
-import com.example.spring_team12_withfe.dto.response.ResponseDto;
-import com.example.spring_team12_withfe.dto.response.ReviewResponseDto;
+import com.example.spring_team12_withfe.dto.response.*;
 import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
-import com.example.spring_team12_withfe.dto.response.Book_ReviewResponseDto;
-import com.example.spring_team12_withfe.dto.response.CommentResponseDto;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import com.example.spring_team12_withfe.repository.CommentRepository;
 import com.example.spring_team12_withfe.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,12 +32,12 @@ public class Book_ReviewService {
     private final HeartRepository heartRepository;
     private final CommentRepository commentRepository;
     private final TokenProvider tokenProvider;
-    private final HeartRepository heartRepository;
 
 
     @Transactional
-    public ResponseDto<?> getAllbook_review(){
-        List<BookReview> bookReviews = book_reviewRepository.findAllByOrderByHeartDesc();
+    public B_ResponseDto<?> getAllbook_review(int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        Page<BookReview> bookReviews = book_reviewRepository.findAllByOrderByHeartDesc(pageable);
         List<Book_ReviewResponseDto> book_reviewResponseDto = new ArrayList<>();
 
         for(BookReview book_review : bookReviews){
@@ -57,7 +56,7 @@ public class Book_ReviewService {
                             .build()
             );
         }
-        return ResponseDto.success(book_reviewResponseDto);
+        return B_ResponseDto.success(book_reviewResponseDto);
     }
 
 
@@ -68,7 +67,6 @@ public class Book_ReviewService {
         BookReview book_review = isParesentReview(id);
         if(book_review == null)
             ResponseDto.fail("NOT_FOUND_REVIEW" ,"리뷰가 존재하지 않습니다.");
-
 
         List<Comment> commentList= commentRepository.findAllByBookReview(book_review);
         List<CommentResponseDto> commentResponseDtoList = new ArrayList<>();

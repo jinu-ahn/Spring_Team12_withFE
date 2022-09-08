@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 @Getter
 public class BookRequestDto {
+    private Long id;
     private String thumbnail;
     private String title;
     private String author;
@@ -12,6 +13,7 @@ public class BookRequestDto {
 
 
     public BookRequestDto(JSONObject book){
+        this.id = book.getLong("isbn");
         this.thumbnail = book.getString("image");
         this.title = book.getString("title");
         this.author = book.getString("author");
