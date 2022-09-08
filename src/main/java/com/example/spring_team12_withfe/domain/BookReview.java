@@ -40,7 +40,7 @@ public class BookReview extends Timestamped {
     private String review;
 
     @Column
-    private Long heart_cnt = 0L;//개수 보여줄 용도
+    private Long heartCnt = 0L;//개수 보여줄 용도
 
 
     @JoinColumn(name = "member_id", nullable = false)
@@ -68,7 +68,7 @@ public class BookReview extends Timestamped {
         return !this.member.equals(member);
     }
     public void setHeartCnt(Long heartCnt){
-        this.heart_cnt = heartCnt;
+        this.heartCnt = heartCnt;
     }
 
 }
