@@ -9,7 +9,6 @@ import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
 import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import com.example.spring_team12_withfe.repository.CommentRepository;
-import com.example.spring_team12_withfe.repository.HeartRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -148,6 +147,7 @@ public class Book_ReviewService {
 
     }
 
+    @Transactional
     public ResponseDto<?> update(Long id,ReviewRequestDto requestDto,HttpServletRequest request){
         Member member = validateMember(request);
         if (null == member) {

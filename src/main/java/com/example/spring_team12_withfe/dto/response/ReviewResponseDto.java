@@ -13,8 +13,6 @@ public class ReviewResponseDto {
     private Long id;
     private String review;
     private String username;
-    private List<Heart> heart;
-
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }
