@@ -139,6 +139,6 @@ public class TokenProvider {
         }
 
         refreshTokenRepository.delete(refreshToken);
-        return ResponseDto.success("success");
+        return ResponseDto.success("로그아웃이 완료되었습니다.");
     }
 }
