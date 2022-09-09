@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class Book_ReviewService {
+public class BookReviewService {
     private final Book_ReviewRepository book_reviewRepository;
 
     private final CommentRepository commentRepository;
@@ -34,11 +34,11 @@ public class Book_ReviewService {
     public B_ResponseDto<?> getAllbook_review(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         Page<BookReview> bookReviews = book_reviewRepository.findAllByOrderByHeartCntDesc(pageable);
-        List<Book_ReviewResponseDto> book_reviewResponseDto = new ArrayList<>();
+        List<BookReviewResponseDto> book_reviewResponseDto = new ArrayList<>();
 
         for(BookReview book_review : bookReviews){
             book_reviewResponseDto.add(
-                    Book_ReviewResponseDto.builder()
+                    BookReviewResponseDto.builder()
                             .id(book_review.getId())
                             .username(book_review.getMember().getUsername())
                             .thumbnail(book_review.getThumbnail())
@@ -81,7 +81,7 @@ public class Book_ReviewService {
 
 
         return ResponseDto.success(
-                Book_ReviewResponseDto.builder()
+                BookReviewResponseDto.builder()
                         .id(book_review.getId())
                         .username(book_review.getMember().getUsername())
                         .thumbnail(book_review.getThumbnail())
@@ -128,7 +128,7 @@ public class Book_ReviewService {
         book_reviewRepository.save(book_review);
 
         return ResponseDto.success(
-                Book_ReviewResponseDto.builder()
+                BookReviewResponseDto.builder()
                         .id(book_review.getId())
                         .thumbnail(book_review.getThumbnail())
                         .title(book_review.getTitle())

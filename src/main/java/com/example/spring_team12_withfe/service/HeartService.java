@@ -47,9 +47,6 @@ public class HeartService {
         if (null == book_review) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 id 입니다.");
         }
-//        // 동일한 리뷰에 동일한 계정으로 이미 좋아요한 내역이 있을 경우 -> 좋아요 못하게..
-//        if (heartRepository.findHeartByMemberAndReview(heartDto.getReviewId(), heartDto.getMemberId()).isPresent())
-//            throw new IllegalArgumentException("ALREADY_HEARTED");
         
         List<Heart> reviewHeart = heartRepository.findByMemberIdAndBookReviewId(member.getId(), bookReview_id);
 
@@ -58,14 +55,14 @@ public class HeartService {
         for (Heart heart : reviewHeart ) {
             if (heart.getMember().equals(member)) {//이미 해당 유저가 좋아요 했을 경우
                 check = true; //좋아요
-                System.out.println("이미 좋아요 한 게시물 입니다.");
+                log.info("이미 좋아요 한 게시물 입니다.");
                 book_review.setHeartCnt(book_review.getHeartCnt() -1);
                 heartRepository.delete(heart);//좋아요 해제
                 break;
             }
         }
             if (check != true) { // 안좋아요에서 POST할 경우 좋아요로 변경
-                System.out.println("좋아요");
+                log.info("좋아요");
                 Heart heart = Heart.builder()
                         .member(member)
                         .bookReview(book_review)

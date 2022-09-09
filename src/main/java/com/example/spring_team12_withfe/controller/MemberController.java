@@ -47,11 +47,5 @@ public class MemberController {
         return mypageService.mypage(request,page,size);
     }
 
-//    @GetMapping("/issue/token")
-//    public GlobalResDto issuedToken(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletResponse response) {
-//        //refresh토큰을 주면서 access토큰을 발급하는 API
-//        response.addHeader(JwtFilter.ACCESS_TOKEN, jwtUtil.createToken(userDetails.getMember().getUsername(), "Access"));
-//        return new GlobalResDto("issuedToken Success", HttpStatus.OK.value());
-//    }
 
 }

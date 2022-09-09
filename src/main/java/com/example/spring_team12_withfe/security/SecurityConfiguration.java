@@ -73,24 +73,6 @@ public class SecurityConfiguration {
         };
     }
 
-
-    // 데이터 전송은 가능 / 보안이 좋지 않음 / 보류
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.addAllowedOrigin("*");
-//        configuration.addAllowedHeader("*");
-//        configuration.addAllowedHeader("Authorization");
-//        configuration.addAllowedMethod("*");
-//
-//
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**",configuration);
-//
-//        return source;
-//
-//    }
-
     @Bean
     @Order(SecurityProperties.BASIC_AUTH_ORDER)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

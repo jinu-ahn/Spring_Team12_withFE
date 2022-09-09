@@ -3,7 +3,7 @@ import com.example.spring_team12_withfe.dto.response.B_ResponseDto;
 import com.example.spring_team12_withfe.dto.response.ResponseDto;
 import com.example.spring_team12_withfe.dto.request.Book_ReviewRequestDto;
 import com.example.spring_team12_withfe.dto.request.ReviewRequestDto;
-import com.example.spring_team12_withfe.service.Book_ReviewService;
+import com.example.spring_team12_withfe.service.BookReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @RestController
-public class Book_ReviewController {
-    private final Book_ReviewService book_reviewService;
+public class BookReviewController {
+    private final BookReviewService book_reviewService;
 
     @GetMapping("/home")
     public B_ResponseDto<?> getAllbook_review(@RequestParam("page")int page,
