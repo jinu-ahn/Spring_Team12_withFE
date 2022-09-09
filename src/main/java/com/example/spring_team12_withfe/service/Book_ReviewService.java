@@ -10,7 +10,6 @@ import com.example.spring_team12_withfe.jwt.TokenProvider;
 import com.example.spring_team12_withfe.repository.Book_ReviewRepository;
 import com.example.spring_team12_withfe.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +23,6 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-@Slf4j
 public class Book_ReviewService {
     private final Book_ReviewRepository book_reviewRepository;
 
@@ -61,7 +59,6 @@ public class Book_ReviewService {
     // 전체 책/리뷰 조회
     @Transactional
     public ResponseDto<?> getbook_review(Long id){
-
         BookReview book_review = isParesentReview(id);
         if(book_review == null)
             ResponseDto.fail("NOT_FOUND_REVIEW" ,"리뷰가 존재하지 않습니다.");

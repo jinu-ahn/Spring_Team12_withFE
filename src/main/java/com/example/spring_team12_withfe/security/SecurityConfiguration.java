@@ -66,7 +66,7 @@ public class SecurityConfiguration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 // allowedOrigins를 * 로 열면 에러가 발생한다.
-                registry.addMapping("/**").allowedOrigins("http://localhost:8080", "http://localhost:3000", "http://54.180.85.234:8080", "http://54.180.85.234")
+                registry.addMapping("/**").allowedOrigins("http://localhost:8080", "http://localhost:3000", "http://13.125.55.110:8080", "http://13.125.55.110/")
                         .allowCredentials(true)
                         .exposedHeaders("Authorization");
             }
@@ -108,10 +108,9 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/member/**").permitAll()
+                .antMatchers("/api/books/**").permitAll()
                 .antMatchers("/api/review/**").permitAll()
                 .antMatchers("/api/comment/**").permitAll()
-                .antMatchers("/api/subcomment/**").permitAll()
-                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
