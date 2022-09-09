@@ -44,7 +44,7 @@ public class MypageService {
                     .author(book_review.getAuthor())
                     .publisher(book_review.getPublisher())
                     .review(book_review.getReview())
-                    .heart(book_review.getHeart_cnt())
+                    .heart(book_review.getHeartCnt())
                     .createdAt(book_review.getCreatedAt())
                     .modifiedAt(book_review.getModifiedAt())
                     .build()
